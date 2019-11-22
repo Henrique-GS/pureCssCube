@@ -128,8 +128,8 @@
     left: 0;
     position: absolute;
     margin: auto auto;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,11 +310,11 @@
 }
 
 .tridown.filled{
-    border-top: .5em solid white;
+    border-top: .2em solid white;
 }
 
 .triup.filled{
-    border-bottom: .5em solid white;
+    border-bottom: .2em solid white;
 }
 
 #fullRing{
