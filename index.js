@@ -1,6 +1,5 @@
 (function IIFE(){
     "use strict"
-    window.addEventListener("mousemove", (event) => rotateCube(event))
     
     const w = window.innerWidth/360;
     const h = window.innerHeight/360;
@@ -12,7 +11,6 @@
         let cube = document.querySelector("#cube")
         
         cube.style.transform = `rotateX(${y}deg) rotateZ(${x}deg) translateY(-3em)`
-        console.log("x",x,"y",y)
     }
     
     
@@ -65,7 +63,7 @@
     fillTriangleRing(outterRing, 1.5, true, false)
     
     
-    const rotateinnerRing = (event) => {
+    const rotateRings = (event) => {
         let x = event.clientX/w;
         let y = event.clientY/h;
         
@@ -75,6 +73,7 @@
     }
     
     
-    window.addEventListener("mousemove", (event) => rotateinnerRing(event))
+    window.addEventListener("mousemove", (event) => rotateRings(event))
+    window.addEventListener("mousemove", (event) => rotateCube(event))
     
 })()
