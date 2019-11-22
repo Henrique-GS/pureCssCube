@@ -109,27 +109,18 @@
     }
 }
 
+@keyframes rotateFullRing {
+    from {
+        transform: rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateZ(360deg);
+    }
+}
+
 *{
     box-sizing: border-box;
     padding: 0;
-}
-
-.white{
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    left:0;
-    top:0;
-    background: #000;
-}
-
-.black{
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    right:0;
-    top:0;
-    background: #000;
 }
 
 .wrapper{
@@ -145,12 +136,13 @@
     perspective: 700px;
     background: #000;
     padding: 0;
+    overflow: hidden;
 }
 
 .outCube{
     animation-duration: 10s;
     animation-iteration-count: infinite;
-    transition-timing-function: ease;
+    transition-timing-function: linear;
     transform-style: preserve-3d;
     animation-name: rotate;
 }
@@ -238,6 +230,7 @@
     font-weight: lighter;
     transform-style: preserve-3d;
     perspective: 50px;
+    z-index: 1;
 }
 
 .author{
@@ -245,7 +238,7 @@
     font-size: 16px;
     color: white;
     margin-left: 52px;
-    bottom: -8px;
+    bottom: 0px;
     font-weight: bold;
 }
 
@@ -270,20 +263,22 @@
     font-weight: lighter;
     text-shadow: 0px -5px 20px white;
     transform-style: preserve-3d;
-    transform: rotateX(50deg) rotateY(180deg) rotateZ(180deg);
+    transform: rotateX(90deg) rotateY(180deg) rotateZ(180deg);
     animation-duration: .7s;
     animation-iteration-count: infinite;
     transition-timing-function: linear;
     animation-name: shadow;
+    margin-bottom: 24px;
 }
 
 /*------------------TRIANGLES---------------------------*/
 
-.sphere{
+.triangleRing{
     transform-style: preserve-3d;
     width: 6em;
     will-change: transform;
     transform: rotateX(80deg);
+    z-index: 2;
 }
 
 .row{
@@ -291,21 +286,40 @@
 }
 
 .triup{
-    position: absolute;
-    width: 0; 
-    height: 0; 
-    border-left: 2.5em solid transparent;
-    border-right: 2.5em solid transparent;
-    opacity: 1;
     border-bottom: 4.33em solid rgb(143, 143, 143);
 }
 
 .tridown{
+    border-top: 4.33em solid white;
+}
+
+.tri{
     position: absolute;
     width: 0; 
     height: 0; 
     border-left: 2.5em solid transparent;
     border-right: 2.5em solid transparent;
     opacity: 1;
-    border-top: 4.33em solid white;
+    filter: sepia(100%);
+}
+
+
+.filled{
+    border-left: 1.25em solid transparent;
+    border-right: 1.25em solid transparent;
+}
+
+.tridown.filled{
+    border-top: .5em solid white;
+}
+
+.triup.filled{
+    border-bottom: .5em solid white;
+}
+
+#fullRing{
+    animation-duration: 20s;
+    transition-timing-function: linear;
+    animation-name: rotateFullRing;
+    animation-iteration-count: infinite;
 }
