@@ -22,35 +22,35 @@
     const outterRing = document.querySelector('#outterRing')
     const fullRing = document.querySelector('#fullRing')
     
-    const glo = 15;
-    const mul = 100;
-    let isup = true
+    const radiusiteratorStepstiplier = 15;
+    const iteratorSteps = 90;
+    let isTriangleUp = true
     
     
     const fillTriangleRing = (parentElement = null, radiusScale = 1, invertGradient = false, fillRing = false) => {
         
         if(!parentElement) return
         
-        const newMul = fillRing ? 3.75 : mul
+        const newIteratorSteps = fillRing ? 3.75 : iteratorSteps
         const row = document.createElement('div')
         row.classList.add('row')
         
-        for(let i = 0; i<=359; i+= newMul){
+        for(let i = 0; i<=359; i+= newIteratorSteps){
             
             const currentGrayValue = invertGradient ? i+10 : 360-i+10
             const opacity = invertGradient ? .5 : 1
             
-            isup = !isup
-            let x = Math.cos(i*Math.PI/180)*glo*radiusScale
-            let z = Math.sin(i*Math.PI/180)*glo*radiusScale
+            isTriangleUp = !isTriangleUp
+            let x = Math.cos(i*Math.PI/180)*radiusiteratorStepstiplier*radiusScale
+            let z = Math.sin(i*Math.PI/180)*radiusiteratorStepstiplier*radiusScale
             
             const tri = document.createElement('div')
             tri.classList.add('tri')
-            tri.classList.add(isup?'triup':'tridown')
+            tri.classList.add(isTriangleUp?'triup':'tridown')
             fillRing && tri.classList.add('filled')
 
             tri.style.transform = `translateX(${x+1.5}em) translateZ(${z}em) rotateY(${90-i}deg)`
-            isup ? tri.style.borderBottomColor = `rgba(${currentGrayValue},${currentGrayValue},${currentGrayValue},${opacity})`
+            isTriangleUp ? tri.style.borderBottomColor = `rgba(${currentGrayValue},${currentGrayValue},${currentGrayValue},${opacity})`
             : tri.style.borderTopColor = `rgba(${currentGrayValue},${currentGrayValue},${currentGrayValue},${opacity})`
 
             row.appendChild(tri)
