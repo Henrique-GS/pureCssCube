@@ -35,7 +35,7 @@
         const row = document.createElement('div')
         row.classList.add('row')
         
-        for(let i = 0; i<=360; i+= newMul){
+        for(let i = 0; i<=359; i+= newMul){
             
             const currentGrayValue = invertGradient ? i+10 : 360-i+10
             const opacity = invertGradient ? .5 : 1
