@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="./manifest.json">
     <link rel="icon" href="./cube.png">  
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body>
@@ -45,5 +45,16 @@
     </div>
     <script src="index.js"></script>
     
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+            .then(function () {
+                console.log('service worker registrado');
+            })
+            .catch(function () {
+                console.warn('service worker falhou');
+            });
+        }
+    </script>
 </body>
 </html>
