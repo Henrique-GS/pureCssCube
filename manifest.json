@@ -6,10 +6,10 @@
     "display": "standalone",
     "start_url": "/",
     "icons": [
-      {
-        "src": "./cube.png",
-        "sizes": "72x72",
-        "type": "image/png"
-      }
+        {
+            "src": "cube.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
     ]
-  }
+}
