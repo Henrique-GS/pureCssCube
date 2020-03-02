@@ -9,22 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Henrique-gs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/cube.png">  
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./cube.png">  
+    <link rel="stylesheet" href="index.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-            .then(function () {
-                console.log('service worker registrado');
-            })
-            .catch(function () {
-                console.warn('service worker falhou');
-            });
-        }
-    </script>
     <div class="wrapper">
         
         <div class="triangleRing" id="outterRing">
@@ -54,5 +44,6 @@
         </div>
     </div>
     <script src="index.js"></script>
+    
 </body>
 </html>
