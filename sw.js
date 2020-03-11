@@ -2,7 +2,6 @@
 var CACHE_NAME = 'cube-v1';
 
 var urlsToCache = [
-  './',
   './index.css',
   './index.js',
   './index.html'
