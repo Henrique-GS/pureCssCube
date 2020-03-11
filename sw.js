@@ -1,39 +1,49 @@
 
-var CACHE_NAME = 'static-v1';
+var CACHE_NAME = 'cube-v1';
 
-self.addEventListener('install', function (event) {
+var urlsToCache = [
+  '/',
+  '/index.css',
+  '/index.js',
+  '/index.html'
+];
+
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll([
-        './',
-        './index.html',
-        './index.css',
-        './index.js',
-        './manifest.js'
-      ]);
-    })
-  )
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Cache was opened :D');
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 
-self.addEventListener('activate', function activator(event) {
+self.addEventListener('activate', function(event) {
+
+  var cacheWhitelist = [CACHE_NAME];
+
   event.waitUntil(
-    caches.keys().then(function (keys) {
-      return Promise.all(keys
-        .filter(function (key) {
-          return key.indexOf(CACHE_NAME) !== 0;
-        })
-        .map(function (key) {
-          return caches.delete(key);
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
         })
       );
     })
   );
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(function (cachedResponse) {
-      return cachedResponse || fetch(event.request);
-    })
+    caches.match(event.request)
+      .then(function(response) {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
   );
 });

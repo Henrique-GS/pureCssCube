@@ -47,12 +47,12 @@
     
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
-            .then(function () {
-                console.log('service worker registrado');
-            })
-            .catch(function () {
-                console.warn('service worker falhou');
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                console.log('ServiceWorker registered :3 \nwith scope: ', registration.scope);
+                }, function(err) {
+                console.log('ServiceWorker not registered :(  \n', err);
+                });
             });
         }
     </script>
