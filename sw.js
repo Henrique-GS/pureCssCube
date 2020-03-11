@@ -2,9 +2,10 @@
 var CACHE_NAME = 'cube-v1';
 
 var urlsToCache = [
-  './index.css',
-  './index.js',
-  './index.html'
+  '/{repository}/',
+  '/{repository}/index.css',
+  '/{repository}/index.js',
+  '/{repository}/index.html'
 ];
 
 self.addEventListener('install', function(event) {
